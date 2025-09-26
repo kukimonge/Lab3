@@ -1,10 +1,16 @@
 #include <stdio.h>
 
+/* El código original declaraba una nueva variable 'n' en el while loop (int n = n - 1) en lugar de modificar la existente (el parámetro).
+ *
+ * Además, la variable nunca fue inicializada, lo que causaba un comportamiento indefinido y un bucle infinito.
+ *
+ * La solución fue eliminar 'int' para modificar el parámetro 'n' directamente. */
+
 int factorial(int n) {
     int i = 1;
     while (n > 1) {
         i = i * n;
-        int n = n - 1;
+        n = n - 1;
     }
     return i;
 }
