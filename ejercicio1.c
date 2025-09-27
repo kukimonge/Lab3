@@ -20,16 +20,18 @@ int main(void) {
     // Mostramos un mensaje de error si la entrada es inválida o si hay caracteres no numéricos adicionales en la entrada.
     if (scanf("%u", &numero) != 1 || (scanf("%c", &sobrante) == 1 && sobrante != '\n')) {
         printf("ERROR: Debe ingresar un número válido, sin caracteres no numéricos.\n\n");
+        return 1; // Terminamos el programa con error.
     }
     // Mostramos un mensaje de error si el número ingresado es mayor a 20, para evitar desbordamientos en el cálculo del factorial.
     else if (numero > 20) {
         printf("ERROR: El número es demasiado grande. Ingrese un número menor o igual a 20.\n\n");
+        return 1; // Terminamos el programa con error.
     }
     // Si la entrada es válida, calculamos y mostramos el factorial del número ingresado.
     else {
         printf("%u! = %lu\n\n", numero, calcularFactorial(numero));
+        return 0; // Terminamos el programa con éxito.
     }
-    return 0;
 }
 
 // El código original declaraba una nueva variable 'n' en el while loop de la función 'factorial', en lugar de utilizar el parámetro 'n'. (int n = n - 1)
