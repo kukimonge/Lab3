@@ -6,7 +6,9 @@
  *
  * La solución fue eliminar 'int' para modificar el parámetro 'n' directamente. */
 
-int factorial(int n) {
+// Función para calcular el factorial de un número de forma iterativa.
+// NOTA: La función devuelve 1 para 0! y 1!, que es el comportamiento esperado.
+long factorial(int n) {
     int i = 1;
     while (n > 1) {
         i = i * n;
@@ -15,9 +17,15 @@ int factorial(int n) {
     return i;
 }
 
-int main(int argc, char *argv[]) {
-    int fac4 = factorial(4);
-    int fac5 = factorial(5);
-    printf ("4! = %d, 5! = %d\n", fac4, fac5);
-    return 0;
+// Función principal que solicita al usuario un número y muestra su factorial.
+int main(void) {
+    int numero; // Variable para almacenar el número ingresado por el usuario.
+    printf("Introduzca un número entero no negativo:\n");
+    scanf("%d", &numero);
+    if (numero < 0) {
+        printf("Error: El número debe ser no negativo.\n");
+    } else {
+        unsigned long resultado = factorial(numero);
+        printf("El factorial de %d es %lu\n", numero, resultado);
+    }
 }
