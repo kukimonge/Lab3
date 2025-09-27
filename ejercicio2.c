@@ -5,6 +5,7 @@
 
 // Función para determinar si una matriz cuadrada es un cuadrado mágico.
 int determinarCuadradoMagico(int matrix[][SIZE]) {
+
     // Determinamos el valor tentativo de la suma mágica para una matriz cuadrada de tamaño dado, usando la primera fila.
     int sumaMagica = 0; // Declaramos e inicializamos una variable para la suma mágica.
     for (int j = 0; j < SIZE; j++) {
@@ -24,6 +25,7 @@ int determinarCuadradoMagico(int matrix[][SIZE]) {
             return 0; // No es un cuadrado mágico
         }
     }
+
     // Verificamos la suma de cada columna 'j' y la comparamos con la suma mágica.
     for (int j = 0; j < SIZE; j++) {
         int sumaColumna = 0; // Declaramos e inicializamos una variable para la suma de la columna actual.
@@ -37,6 +39,7 @@ int determinarCuadradoMagico(int matrix[][SIZE]) {
             return 0; // No es un cuadrado mágico
         }
     }
+
     // Verificamos la suma de la diagonal principal y la comparamos con la suma mágica.
     int sumaDiagonalPrincipal = 0; // Declaramos e inicializamos una variable para la suma de la diagonal principal.
     for (int i = 0; i < SIZE; i++) {
