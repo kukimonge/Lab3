@@ -17,13 +17,9 @@ int main(void) {
     char sobrante; // Variable para detectar caracteres no numéricos en la entrada.
     printf("\nIngrese un número entero no negativo para calcular su factorial: ");
 
-    // Mostramos un mensaje de error si la entrada no es válida. Esto nos permite manejar entradas que comienzan con caracteres no numéricos o números negativos.
-    if (scanf("%u", &numero) != 1) {
-        printf("ERROR: Debe ingresar un número válido.\n\n");
-    }
-    // Mostramos un mensaje de error si el número es válido pero hay caracteres no numéricos adicionales en la entrada.
-    else if (scanf("%c", &sobrante) == 1 && sobrante != '\n') {
-        printf("ERROR: La entrada contiene caracteres no numéricos.\n\n");
+    // Mostramos un mensaje de error si la entrada es inválida o si hay caracteres no numéricos adicionales en la entrada.
+    if (scanf("%u", &numero) != 1 || (scanf("%c", &sobrante) == 1 && sobrante != '\n')) {
+        printf("ERROR: Debe ingresar un número válido, sin caracteres no numéricos.\n\n");
     }
     // Mostramos un mensaje de error si el número ingresado es mayor a 20, para evitar desbordamientos en el cálculo del factorial.
     else if (numero > 20) {
