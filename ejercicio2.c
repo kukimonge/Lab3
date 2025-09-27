@@ -5,8 +5,11 @@
 
 // Función para determinar si una matriz cuadrada es un cuadrado mágico.
 int determinarCuadradoMagico(int matrix[][SIZE]) {
-    // Determinamos el valor esperado de la suma mágica para una matriz cuadrada de tamaño dado.
-    int sumaMagica = SIZE * (SIZE * SIZE + 1) / 2;
+    // Determinamos el valor tentativo de la suma mágica para una matriz cuadrada de tamaño dado, usando la primera fila.
+    int sumaMagica = 0; // Declaramos e inicializamos una variable para la suma mágica.
+    for (int j = 0; j < SIZE; j++) {
+        sumaMagica += matrix[0][j];
+    }
 
     // Verificamos la suma de cada fila 'i' y la comparamos con la suma mágica.
     for (int i = 0; i < SIZE; i++) {
@@ -67,7 +70,7 @@ int main() {
     };
 
     // Mostramos la matriz utilizada para la prueba.
-    printf("La matriz utilizada corresponde a:\n");
+    printf("\nLa matriz utilizada corresponde a:\n");
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
             printf("%d ", matrix[i][j]);
@@ -78,9 +81,9 @@ int main() {
     // Llamamos a la función para determinar si la matriz es un cuadrado mágico.
     // NOTA: La función determinarCuadradoMagico devuelve 1 si es un cuadrado mágico y 0 en caso contrario.
     if (determinarCuadradoMagico(matrix) == 1) {
-        printf("La matriz es un cuadrado mágico.\n");
+        printf("La matriz es un cuadrado mágico.\n\n");
     } else {
-        printf("La matriz no es un cuadrado mágico.\n");
+        printf("La matriz no es un cuadrado mágico.\n\n");
     }
     return 0;
 }
