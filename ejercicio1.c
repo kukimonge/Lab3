@@ -20,12 +20,12 @@ unsigned long calcularFactorial(int n) {
 // Función principal que solicita al usuario un número y muestra su factorial.
 int main(void) {
     int numero; // Variable para almacenar el número ingresado por el usuario.
-    printf("Introduzca un número entero no negativo: ");
+    printf("\nIntroduzca un número entero no negativo: ");
     scanf("%d", &numero);
     if (numero < 0) {
         printf("Error: El número ingresado no puede ser negativo.\n");
     } else {
         unsigned long resultado = calcularFactorial(numero);
-        printf("El factorial de %d es %lu\n", numero, resultado);
+        printf("El factorial de %d es %lu\n\n", numero, resultado);
     }
 }
