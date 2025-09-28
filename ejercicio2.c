@@ -92,7 +92,7 @@ void llenarMatriz(int matrix[][SIZE]) {
 
 // Función auxiliar para buscar un cuadrado mágico
 int buscarCuadradoMagico(int matrix[][SIZE]) {
-    int maximoIntentos = 1000000;
+    int maximoIntentos = 500000;
     // Probamos con diferentes matrices generadas aleatoriamente hasta encontrar un cuadrado mágico o alcanzar el número máximo de intentos.
     for (int i = 0; i <= maximoIntentos; i++) {
         llenarMatriz(matrix); // Llenamos la matriz con números aleatorios.
@@ -151,7 +151,7 @@ int main() {
             mostrarMatriz(matrizPrueba);
             printf("Se encontró un cuadrado mágico después de %d intentos.\n\n", intentos);
         } else {
-            printf("No se encontró un cuadrado mágico después de 1 000 000 intentos.\n\n");
+            printf("No se encontró un cuadrado mágico después de 500 000 intentos.\n\n");
         }
     }
 
