@@ -77,22 +77,22 @@ void mostrarMatriz(int matrix[][SIZE]) {
     }
 }
 
-// Función para llenar una matriz con números aleatorios entre -10 y 10.
+// Función para llenar una matriz con números aleatorios entre 1 y 6.
 void llenarMatriz(int matrix[][SIZE]) {
     // Recorremos cada fila 'i' de la matriz.
     for (int i = 0; i < SIZE; i++) {
-        // Recorremos cada elemento (columna 'j') de la fila 'i' y le asignamos un número aleatorio entre -10 y 10, usando la función 'rand'.
+        // Recorremos cada elemento (columna 'j') de la fila 'i' y le asignamos un número aleatorio entre 1 y 6, usando la función 'rand'.
         // NOTA: La función 'rand' genera números entre 0 y RAND_MAX, por lo que usamos el operador módulo (%) para limitar el rango.
         for (int j = 0; j < SIZE; j++) {
-            // Generamos un número aleatorio entre -10 y 10 y lo asignamos a la posición correspondiente de la matriz.
-            matrix[i][j] = (rand() % 21) - 10; // Números entre -10 y 10
+            // Generamos un número aleatorio entre 1 y 6 y lo asignamos a la posición correspondiente de la matriz.
+            matrix[i][j] = (rand() % 6) + 1; // Números entre 1 y 6
         }
     }
 }
 
 // Función auxiliar para buscar un cuadrado mágico
 int buscarCuadradoMagico(int matrix[][SIZE]) {
-    int maximoIntentos = 100000;
+    int maximoIntentos = 1000000;
     // Probamos con diferentes matrices generadas aleatoriamente hasta encontrar un cuadrado mágico o alcanzar el número máximo de intentos.
     for (int i = 0; i <= maximoIntentos; i++) {
         llenarMatriz(matrix); // Llenamos la matriz con números aleatorios.
@@ -116,14 +116,13 @@ int main() {
     printf("\n-----EJEMPLO DE CUADRADO MÁGICO-----\n");
     printf("\nLa matriz utilizada corresponde a:\n");
     mostrarMatriz(matrizEjemplo);
-    printf("\n");
 
     // Llamamos a la función para determinar si la matriz es un cuadrado mágico.
     // NOTA: La función determinarCuadradoMagico devuelve 1 si es un cuadrado mágico y 0 en caso contrario.
     if (determinarCuadradoMagico(matrizEjemplo) == 1) {
-        printf("La matriz es un cuadrado mágico.\n\n");
+        printf("La matriz es un cuadrado mágico.\n");
     } else {
-        printf("La matriz no es un cuadrado mágico.\n\n");
+        printf("La matriz no es un cuadrado mágico.\n");
     }
 
     // Usamos la función 'srand' para definir la semilla usada al generar números aleatorios con la función 'rand'.
@@ -131,7 +130,7 @@ int main() {
     srand(time(NULL));
 
     // Definimos una segunda matriz vacía y la llenamos usando la función llenarMatriz.
-    // NOTA: Usamos valores entre -10 y 10 para aumentar la probabilidad de que la matriz sea un cuadrado mágico (en comparación con un rango más amplio).
+    // NOTA: Usamos valores entre 1 y 6 para aumentar la probabilidad de que la matriz sea un cuadrado mágico (en comparación con un rango más amplio).
     int matrizPrueba[SIZE][SIZE];
     llenarMatriz(matrizPrueba);
 
@@ -139,21 +138,20 @@ int main() {
     printf("\n-----PRUEBA CON MATRIZ ALEATORIA-----\n");
     printf("\nLa matriz utilizada corresponde a:\n");
     mostrarMatriz(matrizPrueba);
-    printf("\n");
 
     // Llamamos a la función para determinar si la matriz es un cuadrado mágico.
     // NOTA: La función determinarCuadradoMagico devuelve 1 si es un cuadrado mágico y 0 en caso contrario.
     if (determinarCuadradoMagico(matrizPrueba) == 1) {
         printf("La matriz es un cuadrado mágico.\n\n");
     } else {
-        printf("La matriz no es un cuadrado mágico.\n");
-        printf("Probando con otras matrices aleatorias...\n\n");
+        printf("La matriz no es un cuadrado mágico.\n\n");
+        printf("Probando con otras matrices aleatorias...\n");
         int intentos = buscarCuadradoMagico(matrizPrueba);
         if (intentos != -1) {
             mostrarMatriz(matrizPrueba);
             printf("Se encontró un cuadrado mágico después de %d intentos.\n\n", intentos);
         } else {
-            printf("No se encontró un cuadrado mágico después de 100 000 intentos.\n\n");
+            printf("No se encontró un cuadrado mágico después de 1 000 000 intentos.\n\n");
         }
     }
 
