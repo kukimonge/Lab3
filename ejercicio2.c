@@ -79,9 +79,6 @@ void mostrarMatriz(int matrix[][SIZE]) {
 
 // Función para llenar una matriz con números aleatorios entre -10 y 10.
 void llenarMatriz(int matrix[][SIZE]) {
-    // Usamos la función 'srand' para definir la semilla usada al generar números aleatorios con la función 'rand'.
-    // NOTA: time(NULL) devuelve el tiempo actual en segundos desde el 1 de enero de 1970 ("epoch time"), lo que garantiza que la semilla sea diferente cada vez que se ejecuta el programa.
-    srand(time(NULL));
     // Recorremos cada fila 'i' de la matriz.
     for (int i = 0; i < SIZE; i++) {
         // Recorremos cada elemento (columna 'j') de la fila 'i' y le asignamos un número aleatorio entre -10 y 10, usando la función 'rand'.
@@ -91,6 +88,19 @@ void llenarMatriz(int matrix[][SIZE]) {
             matrix[i][j] = (rand() % 21) - 10; // Números entre -10 y 10
         }
     }
+}
+
+// Función auxiliar para buscar un cuadrado mágico
+int buscarCuadradoMagico(int matrix[][SIZE]) {
+    int maximoIntentos = 100000;
+    // Probamos con diferentes matrices generadas aleatoriamente hasta encontrar un cuadrado mágico o alcanzar el número máximo de intentos.
+    for (int i = 0; i <= maximoIntentos; i++) {
+        llenarMatriz(matrix); // Llenamos la matriz con números aleatorios.
+        if (determinarCuadradoMagico(matrix) == 1) {
+            return i; // Si encontramos un cuadrado mágico, devolvemos el número de intentos realizados.
+        }
+    }
+    return -1; // Si no encontramos un cuadrado mágico en el número máximo de intentos, devolvemos -1.
 }
 
 // Función principal para probar la función determinarCuadradoMagico.
@@ -116,6 +126,10 @@ int main() {
         printf("La matriz no es un cuadrado mágico.\n\n");
     }
 
+    // Usamos la función 'srand' para definir la semilla usada al generar números aleatorios con la función 'rand'.
+    // NOTA: time(NULL) devuelve el tiempo actual en segundos desde el 1 de enero de 1970 ("epoch time"), lo que garantiza que la semilla sea diferente cada vez que se ejecuta el programa.
+    srand(time(NULL));
+
     // Definimos una segunda matriz vacía y la llenamos usando la función llenarMatriz.
     // NOTA: Usamos valores entre -10 y 10 para aumentar la probabilidad de que la matriz sea un cuadrado mágico (en comparación con un rango más amplio).
     int matrizPrueba[SIZE][SIZE];
@@ -132,7 +146,15 @@ int main() {
     if (determinarCuadradoMagico(matrizPrueba) == 1) {
         printf("La matriz es un cuadrado mágico.\n\n");
     } else {
-        printf("La matriz no es un cuadrado mágico.\n\n");
+        printf("La matriz no es un cuadrado mágico.\n");
+        printf("Probando con otras matrices aleatorias...\n\n");
+        int intentos = buscarCuadradoMagico(matrizPrueba);
+        if (intentos != -1) {
+            mostrarMatriz(matrizPrueba);
+            printf("Se encontró un cuadrado mágico después de %d intentos.\n\n", intentos);
+        } else {
+            printf("No se encontró un cuadrado mágico después de 100 000 intentos.\n\n");
+        }
     }
 
     return 0;
