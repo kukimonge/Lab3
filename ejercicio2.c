@@ -103,6 +103,7 @@ int main() {
     };
 
     // Mostramos la matriz utilizada como ejemplo.
+    printf("\n-----EJEMPLO DE CUADRADO MÁGICO-----\n");
     printf("\nLa matriz utilizada corresponde a:\n");
     mostrarMatriz(matrizEjemplo);
     printf("\n");
@@ -115,12 +116,13 @@ int main() {
         printf("La matriz no es un cuadrado mágico.\n\n");
     }
 
-    // Definimos una segunda matriz vacía y la llenamos usando la función matrizAleatoria.
+    // Definimos una segunda matriz vacía y la llenamos usando la función llenarMatriz.
     // NOTA: Usamos valores entre -10 y 10 para aumentar la probabilidad de que la matriz sea un cuadrado mágico (en comparación con un rango más amplio).
     int matrizPrueba[SIZE][SIZE];
     llenarMatriz(matrizPrueba);
 
     // Mostramos la matriz generada aleatoriamente.
+    printf("\n-----PRUEBA CON MATRIZ ALEATORIA-----\n");
     printf("\nLa matriz utilizada corresponde a:\n");
     mostrarMatriz(matrizPrueba);
     printf("\n");
