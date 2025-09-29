@@ -13,13 +13,18 @@ unsigned long calcularFactorial(unsigned int n) {
 
 // Función principal para solicitar un número al usuario y mostrar su factorial.
 int main(void) {
-    unsigned int numero; // Variable para almacenar el número ingresado por el usuario.
+    int numero; // Variable para almacenar el número ingresado por el usuario.
     char sobrante; // Variable para detectar caracteres no numéricos en la entrada.
     printf("\nIngrese un número entero no negativo para calcular su factorial: ");
 
     // Mostramos un mensaje de error si la entrada es inválida o si hay caracteres no numéricos adicionales en la entrada.
-    if (scanf("%u", &numero) != 1 || (scanf("%c", &sobrante) == 1 && sobrante != '\n')) {
+    if (scanf("%d", &numero) != 1 || (scanf("%c", &sobrante) == 1 && sobrante != '\n')) {
         printf("ERROR: Debe ingresar un número válido, sin caracteres no numéricos.\n\n");
+        return 1; // Terminamos el programa con error.
+    }
+    // Mostramos un mensaje de error si el número ingresado es negativo.
+    else if (numero < 0) {
+        printf("ERROR: El número no puede ser negativo.\n\n");
         return 1; // Terminamos el programa con error.
     }
     // Mostramos un mensaje de error si el número ingresado es mayor a 20, para evitar desbordamientos en el cálculo del factorial.
@@ -29,7 +34,7 @@ int main(void) {
     }
     // Si la entrada es válida, calculamos y mostramos el factorial del número ingresado.
     else {
-        printf("%u! = %lu\n\n", numero, calcularFactorial(numero));
+        printf("%d! = %lu\n\n", numero, calcularFactorial(numero));
         return 0; // Terminamos el programa con éxito.
     }
 }
