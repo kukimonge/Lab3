@@ -2,7 +2,7 @@
 
 // Función para calcular el factorial de un número de forma iterativa.
 // NOTA: La función devuelve 1 para 0! y 1!, que es el comportamiento esperado.
-unsigned long calcularFactorial(unsigned int n) {
+unsigned long calcularFactorial(int n) {
     unsigned long factorial = 1; // Variable para procesar el resultado del factorial.
     while (n > 1) {
         factorial = factorial * n;
